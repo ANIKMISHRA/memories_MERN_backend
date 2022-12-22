@@ -16,10 +16,12 @@ app.use('/posts', postRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://anikmishra:anikmishra836@cluster0.5g8i3oz.mongodb.net/?retryWrites=true&w=majority'
 
-const PORT = process.env.PORT || 5000;
+
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
+.then(() => app.listen(process.env.PORT || 5000, () => {
+    console.log('Server is listening on port 5000');
+}))
 .catch((error) => console.log(error.message));
 
-// mongoose.set('useFindAndModify', false);
+// mongoose.set('strictQuery', true);
